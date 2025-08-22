@@ -1,0 +1,61 @@
+<div class="dashboard-container">
+  <div class="container-fluid px-4 py-4">
+    <!-- Page Header -->
+    <div class="page-header mb-4">
+      <h1 class="page-title">Webinar</h1>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-container">
+      <nav class="nav nav-tabs custom-tabs" role="tablist">
+        <button 
+          class="nav-link tab-link" 
+          [class.active]="activeTab === 'for-you'"
+          (click)="setActiveTab('for-you')"
+          role="tab"
+        >
+          For you
+        </button>
+        <button 
+          class="nav-link tab-link" 
+          [class.active]="activeTab === 'live'"
+          (click)="setActiveTab('live')"
+          role="tab"
+        >
+          Live
+        </button>
+        <button 
+          class="nav-link tab-link" 
+          [class.active]="activeTab === 'upcoming'"
+          (click)="setActiveTab('upcoming')"
+          role="tab"
+        >
+          Upcoming
+        </button>
+      </nav>
+
+      <!-- Tab Content -->
+      <div class="tab-content mt-4">
+        <!-- For You Tab -->
+        <div class="tab-pane" [class.active]="activeTab === 'for-you'" *ngIf="activeTab === 'for-you'">
+          <div class="content-placeholder">
+            <h3>For You</h3>
+            <p>Personalized webinar recommendations will appear here.</p>
+            <!-- Add your content here -->
+          </div>
+        </div>
+
+        <!-- Live Tab -->
+        <!-- Live Tab -->
+<div class="tab-pane" [class.active]="activeTab === 'live'" *ngIf="activeTab === 'live'">
+  <app-live-webinars-section></app-live-webinars-section>
+</div>
+
+      <!-- Upcoming Tab -->
+<div class="tab-pane" [class.active]="activeTab === 'upcoming'" *ngIf="activeTab === 'upcoming'">
+  <app-upcoming-webinars-section></app-upcoming-webinars-section>
+</div>
+      </div>
+    </div>
+  </div>
+</div>

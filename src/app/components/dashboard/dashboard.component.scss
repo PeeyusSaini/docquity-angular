@@ -1,0 +1,144 @@
+.dashboard-container {
+  min-height: calc(100vh - 80px); // Adjust based on header height
+  background-color: #f8f9fa;
+}
+
+.container-fluid {
+  max-width: 1400px;
+}
+
+// Page Header
+.page-header {
+  .page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #212529;
+    margin: 0;
+  }
+}
+
+// Custom Tabs
+.tabs-container {
+  .custom-tabs {
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 0;
+
+    .tab-link {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: #6c757d;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 0;
+      margin-right: 2rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+
+      &:hover {
+        color: #495057;
+        border-bottom-color: #dee2e6;
+      }
+
+      &.active {
+        color: #212529;
+        border-bottom-color: #000;
+        font-weight: 600;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background-color: #000;
+        }
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+// Tab Content
+.tab-content {
+  .tab-pane {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+// Content Placeholder (remove this when adding real content)
+.content-placeholder {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h3 {
+    color: #495057;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #6c757d;
+    margin: 0;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .page-header {
+    .page-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .tabs-container {
+    .custom-tabs {
+      .tab-link {
+        font-size: 14px;
+        margin-right: 1.5rem;
+        padding: 10px 0;
+      }
+    }
+  }
+
+  .content-placeholder {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .tabs-container {
+    .custom-tabs {
+      .tab-link {
+        margin-right: 1rem;
+        font-size: 13px;
+      }
+    }
+  }
+}

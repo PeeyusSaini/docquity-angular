@@ -1,0 +1,20 @@
+<div class="live-webinars-section">
+  <div class="container-fluid px-4">
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">Live webinars</h2>
+      <button class="view-all-btn" (click)="onViewAll()">
+        View all
+      </button>
+    </div>
+
+    <!-- Webinars Grid -->
+    <div class="webinars-grid">
+      <app-webinar-card 
+        *ngFor="let webinar of webinars" 
+        [webinar]="webinar"
+        [showWatchButton]="true"
+      ></app-webinar-card>
+    </div>
+  </div>
+</div>

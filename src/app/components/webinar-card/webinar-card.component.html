@@ -1,0 +1,105 @@
+<div class="webinar-card" [class.upcoming-card]="cardType === 'upcoming'">
+  <!-- Thumbnail Section -->
+  <div class="webinar-thumbnail">
+    <img [src]="webinar.thumbnail" [alt]="webinar.title" class="thumbnail-image">
+    
+    <!-- Overlay Content -->
+    <div class="thumbnail-overlay">
+      <!-- Live Badge (only for live webinars) -->
+      <div class="live-badge" *ngIf="webinar.isLive && cardType === 'live'">
+        <i class="fas fa-dot-circle"></i>
+        <span>Live</span>
+      </div>
+      
+      <!-- Viewer Count (only for live webinars) -->
+      <div class="viewer-count" *ngIf="webinar.viewerCount && cardType === 'live'">
+        <i class="fas fa-users"></i>
+        <span>{{webinar.viewerCount}}</span>
+      </div>
+      
+      <!-- Duration (only for live webinars) -->
+      <div class="duration-badge" *ngIf="webinar.duration && cardType === 'live'">
+        {{webinar.duration}}
+      </div>
+      
+      <!-- Register Now Button (for upcoming webinars, positioned in overlay) -->
+      <button class="register-overlay-btn" 
+              *ngIf="webinar.hasRegisterButton && cardType === 'upcoming'"
+              (click)="onRegisterNow()"
+              [class.registered]="webinar.isRegistered">
+        {{webinar.isRegistered ? 'Registered' : 'Register Now'}}
+      </button>
+      
+      <!-- Controls (for specific cards) -->
+      <div class="video-controls" *ngIf="webinar.hasClosedCaptions || webinar.hasMute">
+        <button class="control-btn" *ngIf="webinar.hasClosedCaptions">
+          <i class="fas fa-closed-captioning"></i>
+        </button>
+        <button class="control-btn" *ngIf="webinar.hasMute">
+          <i class="fas fa-volume-mute"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Content Section -->
+  <div class="webinar-content">
+    <!-- Credits -->
+    <div class="credits-section">
+      <div class="credits-badge">
+        <i class="fas fa-star"></i>
+        <span class="credits-count">{{webinar.credits}} Credits</span>
+        <span class="credits-expiry" *ngIf="webinar.creditsExpiry">({{webinar.creditsExpiry}})</span>
+      </div>
+    </div>
+    
+    <!-- Title -->
+    <h3 class="webinar-title">{{webinar.title}}</h3>
+    
+    <!-- Organizer -->
+    <div class="organizer-section">
+      <img [src]="webinar.organizer.logo" [alt]="webinar.organizer.name" class="organizer-logo">
+      <span class="organizer-name">by {{webinar.organizer.name}}</span>
+    </div>
+    
+    <!-- Key Highlights -->
+    <div class="highlights-section">
+      <h4 class="highlights-title">KEY HIGHLIGHTS</h4>
+      <div class="highlights-content">
+        <p *ngFor="let highlight of webinar.keyHighlights" class="highlight-item">
+          {{highlight}}
+        </p>
+      </div>
+    </div>
+    
+    <!-- Scheduled Time (for upcoming webinars) -->
+    <div class="schedule-section" *ngIf="cardType === 'upcoming' && (webinar.scheduledDate || webinar.scheduledTime)">
+      <div class="schedule-info">
+        <span class="schedule-label">Goes live on</span>
+        <div class="schedule-datetime">
+          <span class="schedule-date" *ngIf="webinar.scheduledDate">{{webinar.scheduledDate}}</span>
+          <span class="schedule-time" *ngIf="webinar.scheduledTime">, {{webinar.scheduledTime}}</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <!-- Watch Button (for live webinars) -->
+      <button class="watch-btn" 
+              *ngIf="showWatchButton && cardType === 'live'" 
+              (click)="onWatchNow()">
+        Watch now
+      </button>
+      
+      <!-- Notify Me Button (for upcoming webinars) -->
+      <button class="notify-btn" 
+              *ngIf="webinar.hasNotifyButton && cardType === 'upcoming'"
+              (click)="onNotifyMe()"
+              [class.active]="webinar.isNotificationSet">
+        <i class="fas fa-bell"></i>
+        <span>{{webinar.isNotificationSet ? 'Notification Set' : 'Notify me'}}</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container-fluid px-4">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <div class="logo-circle me-2">
+        <span class="logo-text">Q</span>
+      </div>
+    </a>
+
+    <!-- Search Bar -->
+    <div class="search-container flex-grow-1 mx-4">
+      <div class="position-relative">
+        <input 
+          type="text" 
+          class="form-control search-input" 
+          placeholder="Search in docquty"
+          [(ngModel)]="searchQuery"
+        >
+        <i class="search-icon fas fa-search"></i>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <div class="d-flex align-items-center navbar-nav-container">
+      <!-- Home -->
+      <a href="#" class="nav-link-custom" [class.active]="activeTab === 'home'" (click)="setActiveTab('home')">
+        <i class="nav-icon fas fa-home"></i>
+        <span>Home</span>
+      </a>
+
+      <!-- Webinar -->
+      <a href="#" class="nav-link-custom" [class.active]="activeTab === 'webinar'" (click)="setActiveTab('webinar')">
+        <i class="nav-icon fas fa-video"></i>
+        <span>Webinar</span>
+      </a>
+
+      <!-- SKP -->
+      <a href="#" class="nav-link-custom" [class.active]="activeTab === 'skp'" (click)="setActiveTab('skp')">
+        <i class="nav-icon fas fa-chart-line"></i>
+        <span>SKP</span>
+      </a>
+
+      <!-- Calendar -->
+      <a href="#" class="nav-link-custom" [class.active]="activeTab === 'calendar'" (click)="setActiveTab('calendar')">
+        <i class="nav-icon fas fa-calendar-alt"></i>
+        <span>Calendar</span>
+      </a>
+
+      <!-- Notifications -->
+      <a href="#" class="nav-link-custom position-relative" [class.active]="activeTab === 'notifications'" (click)="setActiveTab('notifications')">
+        <i class="nav-icon fas fa-bell"></i>
+        <span>Notifications</span>
+        <span class="notification-badge" *ngIf="notificationCount > 0">{{notificationCount}}</span>
+      </a>
+
+      <!-- Post Button -->
+      <button class="btn post-btn ms-3">
+        <i class="fas fa-plus me-2"></i>
+        Post
+      </button>
+
+      <!-- User Profile -->
+      <div class="dropdown ms-3">
+        <button 
+          class="btn user-profile-btn dropdown-toggle" 
+          type="button"
+          id="userDropdown"
+          (click)="toggleDropdown()"
+          [class.show]="isDropdownOpen"
+        >
+          <img src="assets/images/avatar.jpg" alt="Aaron" class="user-avatar">
+          <span class="user-name">Aaron</span>
+          <span class="user-status"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" [class.show]="isDropdownOpen">
+          <li><a class="dropdown-item" href="#" (click)="closeDropdown()">Profile</a></li>
+          <li><a class="dropdown-item" href="#" (click)="closeDropdown()">Settings</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#" (click)="closeDropdown()">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
