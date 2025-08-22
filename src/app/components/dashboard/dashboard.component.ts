@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { LiveWebinarsSectionComponent } from '../live-webinars-section/live-webinars-section.component';
 import { UpcomingWebinarsSectionComponent } from '../upcoming-webinars-section/upcoming-webinars-section.component';
+import { ForYouWebinarsSectionComponent } from '../for-you-webinars-section/for-you-webinars-section.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule,LiveWebinarsSectionComponent,UpcomingWebinarsSectionComponent],
+  imports: [CommonModule,LiveWebinarsSectionComponent,UpcomingWebinarsSectionComponent,ForYouWebinarsSectionComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

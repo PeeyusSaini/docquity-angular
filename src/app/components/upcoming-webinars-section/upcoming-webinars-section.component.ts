@@ -18,7 +18,7 @@ export class UpcomingWebinarsSectionComponent {
       creditsExpiry: 'Expiring in 20 days',
       isLive: false,
       isUpcoming: true,
-      thumbnail: 'assets/images/upcoming-webinar-1.jpg',
+      thumbnail: 'assets/images/webinar-1.png',
       organizer: {
         name: 'PDGI Indonesia',
         logo: 'assets/images/pdgi-logo.png'
@@ -39,7 +39,7 @@ export class UpcomingWebinarsSectionComponent {
       credits: 2,
       isLive: false,
       isUpcoming: true,
-      thumbnail: 'assets/images/upcoming-webinar-2.jpg',
+      thumbnail: 'assets/images/webinar-2.png',
       organizer: {
         name: 'PDGI Indonesia',
         logo: 'assets/images/pdgi-logo.png'
@@ -60,7 +60,7 @@ export class UpcomingWebinarsSectionComponent {
       credits: 2,
       isLive: false,
       isUpcoming: true,
-      thumbnail: 'assets/images/upcoming-webinar-3.jpg',
+      thumbnail: 'assets/images/webinar-3.jpg',
       organizer: {
         name: 'PDGI Indonesia',
         logo: 'assets/images/pdgi-logo.png'

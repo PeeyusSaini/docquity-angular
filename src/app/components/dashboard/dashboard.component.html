@@ -36,16 +36,9 @@
 
       <!-- Tab Content -->
       <div class="tab-content mt-4">
-        <!-- For You Tab -->
         <div class="tab-pane" [class.active]="activeTab === 'for-you'" *ngIf="activeTab === 'for-you'">
-          <div class="content-placeholder">
-            <h3>For You</h3>
-            <p>Personalized webinar recommendations will appear here.</p>
-            <!-- Add your content here -->
-          </div>
+          <app-for-you-webinars-section></app-for-you-webinars-section>
         </div>
-
-        <!-- Live Tab -->
         <!-- Live Tab -->
 <div class="tab-pane" [class.active]="activeTab === 'live'" *ngIf="activeTab === 'live'">
   <app-live-webinars-section></app-live-webinars-section>

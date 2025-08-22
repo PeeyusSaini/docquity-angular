@@ -18,10 +18,10 @@ export class LiveWebinarsSectionComponent {
       duration: '24:50',
       isLive: true,
       viewerCount: '200+',
-      thumbnail: 'assets/images/webinar-1.jpg',
+      thumbnail: 'assets/images/webinar-1.png',
       organizer: {
         name: 'PDGI Indonesia',
-        logo: 'assets/images/pdgi-logo.png'
+        logo: 'assets/images/webinar-1.png'
       },
       keyHighlights: [
         'Manage chronic and complex diseases'
@@ -35,7 +35,7 @@ export class LiveWebinarsSectionComponent {
       duration: '24:50',
       isLive: true,
       viewerCount: '200+',
-      thumbnail: 'assets/images/webinar-2.jpg',
+      thumbnail: 'assets/images/webinar-2.png',
       organizer: {
         name: 'GSK',
         logo: 'assets/images/gsk-logo.png'
