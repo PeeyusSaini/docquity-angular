@@ -1,0 +1,253 @@
+<div class="for-you-section">
+    <div class="container-fluid px-4">
+      
+      <!-- Webinars based on cardiology section -->
+      <div class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Webinars based on cardiology</h2>
+          <button class="view-all-btn" (click)="onViewAllCardiology()">
+            View all
+          </button>
+        </div>
+        
+        <div class="webinars-grid">
+          <app-webinar-card 
+            *ngFor="let webinar of cardiologyWebinars" 
+            [webinar]="webinar"
+            [showWatchButton]="true"
+          ></app-webinar-card>
+        </div>
+      </div>
+  
+      <!-- Top speakers section -->
+      <div class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Top speakers</h2>
+          <button class="view-all-btn" (click)="onViewAllSpeakers()">
+            View all
+          </button>
+        </div>
+        
+        <div class="speakers-grid">
+          <div 
+            *ngFor="let speaker of topSpeakers; let i = index" 
+            class="speaker-card"
+            [class.live]="i === 0"
+            (click)="onSpeakerClick(speaker)"
+          >
+            <div class="speaker-avatar">
+              <img [src]="speaker.avatar" [alt]="speaker.name">
+              <div *ngIf="i === 0" class="live-indicator">
+                <span class="live-dot"></span>
+                Live
+              </div>
+            </div>
+            <div class="speaker-info">
+              <h3 class="speaker-name">{{ speaker.name }}</h3>
+              <p class="speaker-specialty">{{ speaker.specialty }}</p>
+            </div>
+            <div class="speaker-arrow">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Browse by topic section -->
+      <div class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Browse by topic</h2>
+          <button class="view-all-btn" (click)="onViewAllTopics()">
+            View all
+          </button>
+        </div>
+        
+        <div class="topics-container">
+          <div class="topics-row">
+            <button 
+              *ngFor="let topic of topicsRow1" 
+              class="topic-tag"
+              (click)="onTopicClick(topic)"
+            >
+              {{ topic.name }} ({{ topic.count }})
+            </button>
+          </div>
+          <div class="topics-row">
+            <button 
+              *ngFor="let topic of topicsRow2" 
+              class="topic-tag"
+              (click)="onTopicClick(topic)"
+            >
+              {{ topic.name }} ({{ topic.count }})
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Webinars you may like section -->
+     <!-- Webinars you may like section -->
+<div class="section-block">
+    <div class="section-header">
+      <h2 class="section-title">Webinars you may like</h2>
+    </div>
+  
+    <div class="webinars-you-may-like-layout">
+      <!-- Left Sidebar - Filters -->
+      <div class="filters-sidebar">
+        <!-- Specialty Filter -->
+        <div class="filter-group">
+          <h3 class="filter-title">Specialty</h3>
+          <div class="filter-options">
+            <label class="filter-checkbox">
+              <input type="checkbox" [(ngModel)]="filters.acupuncture">
+              <span class="checkmark"></span>
+              Acupuncture
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" [(ngModel)]="filters.allergy">
+              <span class="checkmark"></span>
+              Allergy and Immunology
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" [(ngModel)]="filters.anaesthesiology">
+              <span class="checkmark"></span>
+              Anaesthesiology
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" [(ngModel)]="filters.clinicalNutrition">
+              <span class="checkmark"></span>
+              Clinical Nutrition
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" [(ngModel)]="filters.generalPractitioner">
+              <span class="checkmark"></span>
+              General Practitioner
+            </label>
+          </div>
+        </div>
+  
+        <!-- Topics Filter -->
+        <div class="filter-group">
+          <h3 class="filter-title">Topics</h3>
+          <!-- Add topics filter if needed -->
+        </div>
+  
+        <!-- Speakers Filter -->
+        <div class="filter-group">
+          <h3 class="filter-title">Speakers</h3>
+          <!-- Add speakers filter if needed -->
+        </div>
+  
+        <!-- Pharma & associations Filter -->
+        <div class="filter-group">
+          <h3 class="filter-title">Pharma & associations</h3>
+          <!-- Add pharma filter if needed -->
+        </div>
+      </div>
+  
+      <!-- Right Content - Webinar Cards -->
+      <div class="webinars-content">
+        <div class="webinars-feed-grid">
+          <div *ngFor="let post of webinarFeed" class="webinar-feed-card">
+            <!-- Post Header -->
+            <div class="post-header">
+              <div class="organizer-info">
+                <img [src]="post.organizer.logo" [alt]="post.organizer.name" class="organizer-avatar">
+                <div class="organizer-details">
+                  <h4 class="organizer-name">{{ post.organizer.name }}</h4>
+                  <p class="post-meta">
+                    <span>Sponsored by {{ post.sponsor }}</span>
+                    <span class="separator">•</span>
+                    <span>{{ post.followers }} followers</span>
+                    <span class="separator">•</span>
+                    <span>{{ post.timeAgo }}</span>
+                  </p>
+                </div>
+              </div>
+              <div class="post-actions">
+                <button class="follow-btn" [class.following]="post.isFollowing" (click)="toggleFollow(post)">
+                  <span *ngIf="!post.isFollowing">+ Follow</span>
+                  <span *ngIf="post.isFollowing">Following</span>
+                </button>
+                <button class="more-btn" (click)="onMoreOptions(post)">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <circle cx="10" cy="4" r="1.5" fill="currentColor"/>
+                    <circle cx="10" cy="10" r="1.5" fill="currentColor"/>
+                    <circle cx="10" cy="16" r="1.5" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+  
+            <!-- Post Content -->
+            <div class="post-content">
+              <div class="webinar-thumbnail">
+                <img [src]="post.thumbnail" [alt]="post.title" class="thumbnail-image">
+                <div class="webinar-overlay">
+                  <div class="credits-badge">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M8 1L10 6H15L11 9L13 14L8 11L3 14L5 9L1 6H6L8 1Z" fill="currentColor"/>
+                    </svg>
+                    {{ post.credits }} Credits
+                    <span *ngIf="post.creditsExpiry" class="credits-expiry">({{ post.creditsExpiry }})</span>
+                  </div>
+                  <div *ngIf="post.duration" class="duration-badge">{{ post.duration }}</div>
+                </div>
+              </div>
+  
+              <div class="post-text">
+                <h3 class="webinar-title">{{ post.title }}</h3>
+                
+                <div class="key-highlights">
+                  <h4>KEY HIGHLIGHTS</h4>
+                  <ul>
+                    <li *ngFor="let highlight of post.keyHighlights">{{ highlight }}</li>
+                  </ul>
+                </div>
+  
+                <div class="engagement-stats">
+                  <span class="stat">{{ post.likes }} Likes</span>
+                  <span class="separator">•</span>
+                  <span class="stat">{{ post.comments }} Comments</span>
+                  <span class="views">{{ post.views }} Views</span>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Post Footer -->
+            <div class="post-footer">
+              <button class="action-btn" [class.active]="post.isLiked" (click)="toggleLike(post)">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M3 10V17C3 17.5523 3.44772 18 4 18H5C5.55228 18 6 17.5523 6 17V10" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 10C6 8 6.5 7 8 6.5C9.5 6 11 5 11 3C11 2.44772 11.4477 2 12 2C12.5523 2 13 2.44772 13 3V6H16C16.5523 6 17 6.44772 17 7V9C17 9.32261 16.8595 9.62951 16.6168 9.84164L14 12H7C6.44772 12 6 11.5523 6 11V10Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Like
+              </button>
+              <button class="action-btn" (click)="onComment(post)">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M2 10C2 14.4183 5.58172 18 10 18C11.2316 18 12.3918 17.7135 13.4286 17.1992L18 18L16.8008 13.4286C17.3151 12.3918 17.6016 11.2316 17.6016 10C17.6016 5.58172 14.0199 2 9.60156 2C5.18328 2 2 5.58172 2 10Z" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Comment
+              </button>
+              <button class="action-btn" (click)="onRepost(post)">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M3 7L7 3M7 3L11 7M7 3V13C7 14.6569 8.34315 16 10 16H17M17 13L13 17M13 17L9 13M13 17V7C13 5.34315 11.6569 4 10 4H7" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Repost
+              </button>
+              <button class="action-btn" (click)="onShare(post)">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M6 10L3 7M3 7L6 4M3 7H11C13.2091 7 15 8.79086 15 11V13M15 13L12 16M15 13L12 10" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                Share
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
